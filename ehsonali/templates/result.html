@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light p-5">
+    <div class="container shadow bg-white p-5 rounded-4" style="max-width: 700px;">
+        <h2 class="text-center mb-4">Hisobot Natijasi</h2>
+        
+        {% if domain %}
+        <div class="alert alert-info">
+            <h5>🌐 Sayt tahlili: {{ domain }}</h5>
+            <p>HTTPS: {{ url_res.https }}</p>
+            <p>SSL: {{ url_res.ssl }}</p>
+            <p>Ochilgan sana: {{ url_res.domain_age }}</p>
+        </div>
+        {% endif %}
+
+        <h5 class="mt-4">Profilingiz xavfsizligi: {{ score }}%</h5>
+        <div class="progress mb-4" style="height: 25px;">
+            <div class="progress-bar {% if score > 70 %}bg-success{% elif score > 40 %}bg-warning{% else %}bg-danger{% endif %}" 
+                 style="width: {{ score }}%;">{{ score }}%</div>
+        </div>
+
+        <div class="card bg-light p-3">
+            <h6>⚠️ Tavsiyalar:</h6>
+            <ul>
+                {% for r in recs %} <li>{{ r }}</li> {% endfor %}
+            </ul>
+        </div>
+        <a href="/" class="btn btn-secondary mt-4">Orqaga</a>
+    </div>
+</body>
+</html>
